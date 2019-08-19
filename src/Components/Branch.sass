@@ -1,0 +1,31 @@
+@import 'mixins'
+@import 'colors'
+
+.branches
+  margin: 1em 1em
+  .branch
+    margin-bottom: .5em
+    &.success
+      background-color: $success
+    &.unknown
+      background-color: $unknown
+    &.fail
+      background-color: $failure
+
+    &.building
+      animation: blink 0.7s infinite
+
+    &>.name
+      padding: .4em
+      font-size: 1.4em
+
+      &.building
+        animation: blink 0.7s infinite
+
+@keyframes blink
+  0%
+    background-color: desaturate(blue, 60%)
+  50%
+    background-color: desaturate(blue, 90%)
+  100%
+    background-color: desaturate(blue, 60%)

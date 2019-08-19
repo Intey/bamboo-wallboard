@@ -1,0 +1,11 @@
+@keyframes blinker {
+  50% { background-color: red; }
+  50% { background-color: black; }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  animation: blinker 1s linear infinite;
+}

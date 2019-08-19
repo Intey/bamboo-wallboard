@@ -1,0 +1,68 @@
+@import 'mixins'
+@import 'colors'
+
+=building-anim($delay)
+  animation: building1 1s infinite
+  animation-delay: $delay
+
+.plans
+  +grid-container()
+
+  .plan
+    // project name pad or between plans
+    margin-top: 1em
+    +inrow-child()
+    // colors
+    &.success
+      background-color: darken($success, 5%)
+    &.fail
+      background-color: darken($failure, 5%)
+    &.unknown
+      background-color: $unknown
+
+    // space between plans
+    margin-right: 1em
+    &:last-child
+      margin-right: 0em
+
+    &.building
+      animation: blink 0.7s infinite
+      & .branch:nth-child(1)
+        +building-anim(0s)
+      & .branch:nth-child(2)
+        +building-anim(.1s)
+      & .branch:nth-child(3)
+        +building-anim(.2s)
+      & .branch:nth-child(4)
+        +building-anim(.3s)
+      & .branch:nth-child(5)
+        +building-anim(.4s)
+      & .branch:nth-child(6)
+        +building-anim(.5s)
+      & .branch:nth-child(7)
+        +building-anim(.6s)
+      & .branch:nth-child(8)
+        +building-anim(.7s)
+
+    & > .name
+      padding: 1em
+      font-size: 1.5em
+      margin: 0 0 .4em 0
+
+
+
+@keyframes blink
+  0%
+    background-color: desaturate(blue, 60%)
+  50%
+    background-color: desaturate(blue, 90%)
+  100%
+    background-color: desaturate(blue, 60%)
+
+@keyframes building1
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(.9, 1)
+  100%
+    transform: scale(1)
